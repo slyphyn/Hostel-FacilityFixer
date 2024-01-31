@@ -62,7 +62,6 @@
             var successMessage = urlParams.get('success');
 
             if (successMessage) {
-                // Display the custom alert modal
                 $('#customAlertMessage').html(successMessage);
                 $('#customAlertModal').modal('show');
             }

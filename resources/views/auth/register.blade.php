@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" id="registration-form">
                             @csrf
 
                             <div class="row mb-3">
@@ -89,5 +89,39 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="passwordMismatchModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Password Mismatch</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Passwords do not match. Please input the correct password.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('registration-form');
+
+        form.addEventListener('submit', function (event) {
+            const password = form.querySelector('#password').value;
+            const confirmPassword = form.querySelector('#password-confirm').value;
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                $('#passwordMismatchModal').modal('show');
+            }
+        });
+    });
+    </script>
 @endsection
+

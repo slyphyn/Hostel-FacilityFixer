@@ -31,7 +31,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'max:15'], // Updated to 'phone'
+            'phone' => ['required', 'string', 'max:15'], 
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -41,8 +41,6 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
-
-        // can add additional logic here (e.g., sending email verification)
 
         return redirect()->route('login')->with('success', 'Registration successful! Please log in.');
     }
