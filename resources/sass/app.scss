@@ -1,0 +1,13 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+body, html, .py-4 {
+    background-color: #ab222f6b;
+    min-height: 100vh;
+    margin: 0;  // Reset margin to ensure no extra space
+}
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
